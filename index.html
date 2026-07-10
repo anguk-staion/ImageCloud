@@ -1,0 +1,158 @@
+<style>
+  /* 갤러리 전체 컨테이너 설정 */
+  .card-news-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+  
+  /* 라디오 버튼 숨김 (기능으로만 사용) */
+  input[name="slider"] {
+    display: none;
+  }
+  
+  /* 슬라이드 기본 설정 (모두 숨김) */
+  .slide {
+    display: none;
+    position: relative;
+    width: 100%;
+  }
+  
+  .slide img {
+    width: 100%;
+    display: block;
+  }
+  
+  /* 라디오 버튼 체크 상태에 따라 해당 슬라이드만 표시 (1~10페이지) */
+  #slide1:checked ~ .slide-wrap .slide-1,
+  #slide2:checked ~ .slide-wrap .slide-2,
+  #slide3:checked ~ .slide-wrap .slide-3,
+  #slide4:checked ~ .slide-wrap .slide-4,
+  #slide5:checked ~ .slide-wrap .slide-5,
+  #slide6:checked ~ .slide-wrap .slide-6,
+  #slide7:checked ~ .slide-wrap .slide-7,
+  #slide8:checked ~ .slide-wrap .slide-8,
+  #slide9:checked ~ .slide-wrap .slide-9,
+  #slide10:checked ~ .slide-wrap .slide-10 {
+    display: block;
+  }
+  
+  /* 좌우 클릭 영역(라벨) 설정 */
+  .nav-left, .nav-right {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .nav-left { left: 0; }
+  .nav-right { right: 0; }
+  
+  /* 하단 페이지 인디케이터 (점) 디자인 */
+  .pagination {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #fff;
+  }
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  /* 활성화된 페이지의 점 색상 변경 (1~10페이지) */
+  #slide1:checked ~ .pagination .dot-1,
+  #slide2:checked ~ .pagination .dot-2,
+  #slide3:checked ~ .pagination .dot-3,
+  #slide4:checked ~ .pagination .dot-4,
+  #slide5:checked ~ .pagination .dot-5,
+  #slide6:checked ~ .pagination .dot-6,
+  #slide7:checked ~ .pagination .dot-7,
+  #slide8:checked ~ .pagination .dot-8,
+  #slide9:checked ~ .pagination .dot-9,
+  #slide10:checked ~ .pagination .dot-10 {
+    background-color: #333333;
+  }
+
+  /* 10페이지 투명 링크 영역(오버레이) 설정 */
+  .link-overlay {
+    position: absolute;
+    display: block;
+    z-index: 20; /* 슬라이드 좌우 넘김 영역(10)보다 위에 배치 */
+    
+    /* 위치 미세 조정이 필요할 때 아래 코드의 주석(/* */)을 지우면 빨간 테두리로 영역이 표시됩니다. */
+    /* border: 2px solid red; background-color: rgba(255, 0, 0, 0.2); */
+  }
+</style>
+
+<div class="card-news-container" style="font-family: sans-serif; font-size: 12pt; line-height: 1.5; margin-top: 0px; margin-bottom: 0px;">
+  
+  <input type="radio" name="slider" id="slide1" checked="checked"> 
+  <input type="radio" name="slider" id="slide2">
+  <input type="radio" name="slider" id="slide3">
+  <input type="radio" name="slider" id="slide4">
+  <input type="radio" name="slider" id="slide5">
+  <input type="radio" name="slider" id="slide6">
+  <input type="radio" name="slider" id="slide7">
+  <input type="radio" name="slider" id="slide8">
+  <input type="radio" name="slider" id="slide9">
+  <input type="radio" name="slider" id="slide10">
+
+  <div class="slide-wrap" style="font-family: sans-serif; font-size: 12pt; line-height: 1.5; margin-top: 0px; margin-bottom: 0px;">
+    
+    <div class="slide slide-1"><img alt="Page 1" src="https://teams.playground-aidesignlab.co.kr/book-01.png"><label for="slide2" class="nav-right"></label></div>
+    <div class="slide slide-2"><img alt="Page 2" src="https://teams.playground-aidesignlab.co.kr/book-02.png"><label for="slide1" class="nav-left"></label><label for="slide3" class="nav-right"></label></div>
+    <div class="slide slide-3"><img alt="Page 3" src="https://teams.playground-aidesignlab.co.kr/book-03.png"><label for="slide2" class="nav-left"></label><label for="slide4" class="nav-right"></label></div>
+    <div class="slide slide-4"><img alt="Page 4" src="https://teams.playground-aidesignlab.co.kr/book-04.png"><label for="slide3" class="nav-left"></label><label for="slide5" class="nav-right"></label></div>
+    <div class="slide slide-5"><img alt="Page 5" src="https://teams.playground-aidesignlab.co.kr/book-05.png"><label for="slide4" class="nav-left"></label><label for="slide6" class="nav-right"></label></div>
+    <div class="slide slide-6"><img alt="Page 6" src="https://teams.playground-aidesignlab.co.kr/book-06.png"><label for="slide5" class="nav-left"></label><label for="slide7" class="nav-right"></label></div>
+    <div class="slide slide-7"><img alt="Page 7" src="https://teams.playground-aidesignlab.co.kr/book-07.png"><label for="slide6" class="nav-left"></label><label for="slide8" class="nav-right"></label></div>
+    <div class="slide slide-8"><img alt="Page 8" src="https://teams.playground-aidesignlab.co.kr/book-08.png"><label for="slide7" class="nav-left"></label><label for="slide9" class="nav-right"></label></div>
+    <div class="slide slide-9"><img alt="Page 9" src="https://teams.playground-aidesignlab.co.kr/book-09.png"><label for="slide8" class="nav-left"></label><label for="slide10" class="nav-right"></label></div>
+    
+    <div class="slide slide-10" style="font-family: sans-serif; font-size: 12pt; line-height: 1.5; margin-top: 0px; margin-bottom: 0px;">
+      <img alt="Page 10" src="https://raw.githubusercontent.com/anguk-staion/ImageCloud/main/book-10.png">
+      
+      <a href="https://autoway.hyundai.net/board/H147/Lists/H14700033/DispForm.aspx?ID=64&isDlg=1" 
+         target="_blank" class="link-overlay" title="Copilot Chat"
+         style="top: 31%; left: 65%; width: 30%; height: 12%;"></a>
+
+      <a href="https://teams.microsoft.com/l/channel/19%3A1b51738e3b8448fab35322050c0047b2%40thread.tacv2/%F0%9F%92%AC%20%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90?groupId=43c83ad4-1ac0-44ad-8ab1-6729a6279fcb&tenantId=5fcb0def-a698-40ce-a73a-ea61130c13c6" 
+         target="_blank" class="link-overlay" title="PlayGround"
+         style="top: 51%; left: 65%; width: 30%; height: 12%;"></a>
+
+      <a href="https://teams.microsoft.com/l/entity/2a527703-1f6f-4559-a332-d8a7d288cd88/_djb2_msteams_prefix_2160805870?context=%7B%22channelId%22%3A%2219%3A9V-nE4evuyrY2OE7o3AkKjUp2nlOBIWLWnfjHI8rp6s1%40thread.tacv2%22%7D&tenantId=5fcb0def-a698-40ce-a73a-ea61130c13c6" 
+         target="_blank" class="link-overlay" title="AI Guide"
+         style="top: 71%; left: 51%; width: 21%; height: 12%;"></a>
+
+      <a href="https://teams.microsoft.com/l/entity/2a527703-1f6f-4559-a332-d8a7d288cd88/_djb2_msteams_prefix_1959983724?context=%7B%22channelId%22%3A%2219%3A9V-nE4evuyrY2OE7o3AkKjUp2nlOBIWLWnfjHI8rp6s1%40thread.tacv2%22%7D&tenantId=5fcb0def-a698-40ce-a73a-ea61130c13c6" 
+         target="_blank" class="link-overlay" title="Weekly AI"
+         style="top: 71%; left: 74%; width: 21%; height: 12%;"></a>
+
+      <label for="slide9" class="nav-left"></label>
+    </div>
+  </div>
+  
+  <div class="pagination" style="font-family: sans-serif; font-size: 12pt; line-height: 1.5; margin-top: 0px; margin-bottom: 0px;">
+    <label for="slide1" class="dot dot-1"></label>
+    <label for="slide2" class="dot dot-2"></label>
+    <label for="slide3" class="dot dot-3"></label>
+    <label for="slide4" class="dot dot-4"></label>
+    <label for="slide5" class="dot dot-5"></label>
+    <label for="slide6" class="dot dot-6"></label>
+    <label for="slide7" class="dot dot-7"></label>
+    <label for="slide8" class="dot dot-8"></label>
+    <label for="slide9" class="dot dot-9"></label>
+    <label for="slide10" class="dot dot-10"></label>
+  </div>
+</div>
+<p style="font-family: '현대산스 Head', sans-serif; font-size: 12pt; line-height: 1.5; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p>
